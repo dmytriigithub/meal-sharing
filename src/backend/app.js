@@ -21,6 +21,73 @@ app.use(cors());
 
 router.use("/meals", mealsRouter);
 
+//-------------------------------------------------------------
+
+const knex = require("./database");
+
+
+router.get("/all-meals", async (request, response) => {
+  try {
+    const allMeals = await knex("Meal").select("*").orderBy('id', 'desc');
+    response.json(allMeals);
+  } 
+  catch (error) {
+    throw error;
+  }
+});
+
+router.get("/future-meals", async (request, response) => {
+  try {
+    const futureMeals = await knex("Meal").select("*").where("created_date", '>=', '2023-01-01');
+    response.json(futureMeals);
+  } 
+  catch (error) {
+    throw error;
+  }
+});
+
+router.get("/past-meals", async (request, response) => {
+  try {
+    const pastMeals = await knex("Meal").select("*").where("created_date", '<=', '2023-01-01');
+    response.json(pastMeals);
+  } 
+  catch (error) {
+    throw error;
+  }
+});
+
+router.get("/last-meals", async (request, response) => {
+  try {
+    const maxIdQuery = await knex('Meal').max('id as maxId');
+    const lastMeals = await knex("Meal").select("*").where("id", maxIdQuery[0].maxId);
+    if (lastMeals.length === 0) {
+      response.status(404).end("Not Found Meals");
+    } else {
+      response.json(lastMeals);
+    }
+  } 
+  catch (error) {
+    throw error;
+  }
+});
+
+router.get("/first-meals", async (request, response) => {
+  try {
+    const minIdQuery = await knex('Meal').min('id as minId');
+    const firstMeals = await knex("Meal").select("*").where("id", minIdQuery[0].minId);
+    if (firstMeals.length === 0) {
+      response.status(404).end("Not Found Meals");
+    } else {
+      response.json(firstMeals);
+    }
+  }
+  catch (error) {
+    throw error;
+  }
+});
+
+//------------------------------------------------------------------
+
 if (process.env.API_PATH) {
   app.use(process.env.API_PATH, router);
 } else {
