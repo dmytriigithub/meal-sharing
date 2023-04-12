@@ -11,7 +11,9 @@ reservationsRouter.get("/", async (request, response) => {
       response.json(allReservations);
     } 
     catch (error) {
-      throw error;
+      res.status(500).json({
+        error: 'Error while looking for the reservation'
+      });
     }
   });
   
@@ -25,7 +27,9 @@ reservationsRouter.get("/", async (request, response) => {
       response.json(idReservation);
     } 
     catch (error) {
-      throw error;
+      res.status(500).json({
+        error: 'Error while looking for the reservation'
+      });
     }
   });
   
@@ -35,7 +39,9 @@ reservationsRouter.get("/", async (request, response) => {
       response.status(201).json({messge: "Look Mum, I made a thing"});
     } 
     catch (error) {
-      throw error;
+      res.status(500).json({
+        error: 'Error while creating the reservation'
+      });
     }
   });
   
@@ -48,7 +54,9 @@ reservationsRouter.get("/", async (request, response) => {
       }
     } 
     catch (error) {
-      throw error;
+      res.status(500).json({
+        error: 'Error while updating the reservation'
+      });
     }
   });
   
@@ -59,7 +67,9 @@ reservationsRouter.get("/", async (request, response) => {
       response.status(200).json({ messange: 'This shit deleted' });;
     } 
     catch (error) {
-      throw error;
+      res.status(500).json({
+        error: 'Error while deleting the reservation'
+      });
     }
   });
   
