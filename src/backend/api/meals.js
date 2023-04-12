@@ -24,7 +24,10 @@ mealsRouter.post("/", async (request, response) => {
     response.status(201).json({messange: "Look Mum, I made a thing"});
   } 
   catch (error) {
-    throw error;
+    console.error(error)
+    res.status(500).json({
+      error: 'Error while creating the meal'
+    });
   }
 });
 
@@ -37,7 +40,10 @@ mealsRouter.put("/:id", async (request, response) => {
     }
   } 
   catch (error) {
-    throw error;
+    console.error(error)
+    res.status(500).json({
+      error: 'Error while updating the meal'
+    });
   }
 });
 
@@ -48,7 +54,10 @@ mealsRouter.delete("/:id", async (request, response) => {
     response.status(200).send({ messange: 'This shit deleted' });;
   } 
   catch (error) {
-    throw error;
+    console.error(error)
+    res.status(500).json({
+      error: 'Error while deleting the meal'
+    });
   }
 });
 
@@ -143,7 +152,10 @@ mealsRouter.get("/", async (request, response) => {
     } 
   } 
   catch (error) {
-    throw error;
+    console.error(error)
+    res.status(500).json({
+      error: 'Error while looking for the meal'
+    });
   }
 });
 

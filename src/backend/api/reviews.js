@@ -11,7 +11,10 @@ reviewsRouter.get("/", async (request, response) => {
       response.json(allReviews);
     } 
     catch (error) {
-      throw error;
+      console.error(error)
+      res.status(500).json({
+        error: 'Error while looking for the review'
+      });
     }
   });
   
@@ -25,7 +28,10 @@ reviewsRouter.get("/", async (request, response) => {
       response.json(idReview);
     } 
     catch (error) {
-      throw error;
+      console.error(error)
+      res.status(500).json({
+        error: 'Error while looking for the review'
+      });
     }
   });
   
@@ -35,7 +41,10 @@ reviewsRouter.get("/", async (request, response) => {
       response.status(201).json({messange: "Look Mum, I made a thing"});
     } 
     catch (error) {
-      throw error;
+      console.error(error)
+      res.status(500).json({
+        error: 'Error while creating the review'
+      });
     }
   });
   
@@ -48,7 +57,10 @@ reviewsRouter.get("/", async (request, response) => {
       }
     } 
     catch (error) {
-      throw error;
+      console.error(error)
+      res.status(500).json({
+        error: 'Error while updating the review'
+      });
     }
   });
   
@@ -59,7 +71,10 @@ reviewsRouter.get("/", async (request, response) => {
       response.status(200).json({ messange: 'This shit deleted' });;
     } 
     catch (error) {
-      throw error;
+      console.error(error)
+      res.status(500).json({
+        error: 'Error while deleting the review'
+      });
     }
   });
   
