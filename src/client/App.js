@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import TestComponent from "./components/TestComponent/TestComponent";
 import MealsList from "./components/mealsList/MealsList";
+import ErrorBoundary from "./components/errorBoundary/ErrorBoundary";
 
 function App() {
 
@@ -15,7 +16,10 @@ function App() {
       </Route>
 
       <Route exact path="/meals">
-        <MealsList/>
+        <ErrorBoundary>
+          <MealsList/>
+        </ErrorBoundary>
+        
       </Route>
       
       <Route exact path="/test-component">
