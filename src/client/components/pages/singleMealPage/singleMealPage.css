@@ -1,0 +1,31 @@
+.single-meal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.single-meal__info {
+    background-color: #9589892d;;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.single-meal__wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+.single-meal__back {
+    font-weight: bold;
+    font-size: large;
+}
+
+.single-meal__back:hover {
+    font-size: x-large;
+}
+
+.single-meal__img {
+    width: 700px;
+    height: 500px;
+}
