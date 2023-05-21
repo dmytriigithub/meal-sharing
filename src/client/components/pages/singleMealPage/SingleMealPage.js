@@ -37,7 +37,7 @@ const SingleMealPage = () => {
         
     
         return (
-            <SingleMealContext.Provider value={{isReservationFormVisible, setReservationFormVisible, isReviewFormVisible, setReviewFormVisible, mealId, max_reservations}}>
+            <SingleMealContext.Provider value={{isReservationFormVisible, setReservationFormVisible, isReviewFormVisible, setReviewFormVisible, mealId, max_reservations, status}}>
                 <div className="single-meal">
                 
                 <div className="single-meal__info">

@@ -50,3 +50,9 @@
     margin-top: 10px;
     background-color: #F26644;
 }
+
+.reservationUnavailable {
+    margin-top: 150px;
+    text-align: center;
+    font-weight: bold;
+}

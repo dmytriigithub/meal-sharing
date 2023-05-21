@@ -20,7 +20,7 @@ const useMealSharingService = () => {
 		return response.map(_transformReview);
 	};
 
-	const postReservatiion = async (data) => {
+	const postReservation = async (data) => {
 		const url = "http://localhost:5000/api/reservations/";
 		const method = 'POST';
 		const body = data;
@@ -100,7 +100,7 @@ const useMealSharingService = () => {
 		getAllMeals,
 		getMeal,
 		getReview,
-		postReservatiion,
+		postReservation,
 		postReview,
 		clearError
 	
