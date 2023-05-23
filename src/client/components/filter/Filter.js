@@ -37,9 +37,7 @@ function Filter() {
         <div className='filter'>
             <input value={text} type="text" placeholder="Search meal" onChange={onTitleValueChange} />
             <select id="country" value={option} onChange={onLocationValueChange}>
-                <option value=""  >
-                Choose country
-                </option>
+                <option value="">Choose country</option>
                 {data && getOptions()}
             </select>
             <input value={price} type="text" placeholder="Max price" onChange={onPriceValueChange} />
