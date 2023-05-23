@@ -50,7 +50,7 @@ const ReviewForm = () => {
                         <input type="radio" id="star-1" name="rating" value="1" onChange={(e) => {setStars(e.target.value)}}/>
                         <label htmlFor="star-1" title="Rating «1»"></label>
                     </div>
-                    <button className="reviewFormBtn" onClick={postReviewData}>Submit</button>
+                    <button className="reviewFormBtn" onClick={ name && description ? postReviewData: null}>Submit</button>
                 </form>
             </div>
         </div>

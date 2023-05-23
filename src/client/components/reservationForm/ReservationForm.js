@@ -43,8 +43,8 @@ const ReservationForm = () => {
                         <input required placeholder="Phone number" type="tel" className="resevationPhone" value={phone} onChange={(e) => {setPhone(e.target.value)}}/>
                         <input required placeholder="Email" type="email" className="reservationEmail" value={email} onChange={(e) => {setEmail(e.target.value)}}/>
                         <input required placeholder="Date" type="date" className="reservationDate" value={date} onChange={(e) => {setDate(e.target.value)}}/>
-                        <input required placeholder="Number of guests" type="number" className="reservationGuestNumber" max={max_reservations} min={1} value={guests} onChange={(e) => {setGuests(e.target.value)}}/>
-                        <button className="reservationFormBtn" onClick={postReservationData}>Submit</button>
+                        <input required placeholder="Number of guests" type="number" className="reservationGuestNumber" max={max_reservations} min={1} value={guests} onChange={(e) => {setGuests(e.target.value), console.log(date)}}/>
+                        <button className="reservationFormBtn" onClick={name && phone && email && date && guests ? postReservationData : null}>Submit</button>
                     </form>
                 </div>
             </div>
