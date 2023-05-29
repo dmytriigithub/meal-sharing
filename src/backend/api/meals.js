@@ -4,19 +4,19 @@ const knex = require("../database");
 
 //-------------------------------------------------------NodeJS-week2
 
-// mealsRouter.get("/:id", async (request, response) => {
-//   try {
-//     const id = parseInt(request.params.id);
-//     const idMeal = await knex("Meal").select("*").where("id", '=', id);
-//     if(!idMeal.length){
-//       response.status(404).json({ error: 'That shit doesn’t exist' });
-//     }
-//     response.json(idMeal);
-//   } 
-//   catch (error) {
-//     throw error;
-//   }
-// });
+mealsRouter.get("/:id", async (request, response) => {
+  try {
+    const id = parseInt(request.params.id);
+    const idMeal = await knex("Meal").select("*").where("id", '=', id);
+    if(!idMeal.length){
+      response.status(404).json({ error: 'That shit doesn’t exist' });
+    }
+    response.json(idMeal);
+  } 
+  catch (error) {
+    throw error;
+  }
+});
 
 mealsRouter.post("/", async (request, response) => {
   try {
@@ -27,6 +27,50 @@ mealsRouter.post("/", async (request, response) => {
     console.error(error)
     res.status(500).json({
       error: 'Error while creating the meal'
+    });
+  }
+});
+
+
+mealsRouter.get("/", async (request, response) => {
+  try {
+    const allMeals = await knex("Meal").select("*")
+    if(!allMeals.length){
+      response.status(404).json({ error: 'That shit doesn’t exist.' });
+    }
+    response.json(allMeals);
+  } 
+  catch (error) {
+    res.status(500).json({
+      error: 'Error while looking for the meal'
+    });
+  }
+});
+
+mealsRouter.get("/:id", async (request, response) => {
+  try {
+    const id = parseInt(request.params.id);
+    const idMeal = await knex("Meal").select("*").where("id", '=', id);
+    if(!idMeal.length){
+      response.status(404).json({ error: 'That shit doesn’t exist' });
+    }
+    response.json(idMeal);
+  } 
+  catch (error) {
+    res.status(500).json({
+      error: 'Error while looking for the meal'
+    });
+  }
+});
+
+mealsRouter.post("/", async (request, response) => {
+  try {
+    await knex("Meal").insert(request.body);
+    response.status(201).json({messge: "Look Mum, I made a thing"});
+  } 
+  catch (error) {
+    res.status(500).json({
+      error: 'Error while looking for the meal'
     });
   }
 });
@@ -54,7 +98,6 @@ mealsRouter.delete("/:id", async (request, response) => {
     response.status(200).send({ messange: 'This shit deleted' });;
   } 
   catch (error) {
-    console.error(error)
     res.status(500).json({
       error: 'Error while deleting the meal'
     });
