@@ -1,0 +1,9 @@
+.listItem {
+    background-color: #d6d1d1;
+    border-radius: 10px;
+}
+
+li {
+    margin: 10px;
+    padding: 10px;
+  }
