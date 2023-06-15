@@ -1,9 +1,48 @@
-.listItem {
-    background-color: #d6d1d1;
-    border-radius: 10px;
+.meals-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-li {
-    margin: 10px;
-    padding: 10px;
-  }
+
+
+.meal-list_item {
+
+    margin-bottom: 20px;
+    background-color: #9589892d;
+    border-radius: 10px;
+
+    --w: 1000px;   
+    --h: 300px;  
+    --b: 4px;   
+    --g: 5px;    
+    --c: #F26644; 
+
+    width: var(--w);
+    height: var(--h);
+    outline: calc(var(--h)/2) solid rgba(0, 0, 0, 0.151);
+    outline-offset: calc(var(--h)/-2);
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.meal-list_item:hover {
+    outline: var(--b) solid var(--c);
+    outline-offset: var(--g);
+}
+
+.meal-list__wrapper {
+    margin: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.meal-list__img {
+    margin-top: 25px;
+    margin-right: 10px;
+    height: 250px;
+    width: 250px;
+}
+
+  
