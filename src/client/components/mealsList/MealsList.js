@@ -16,13 +16,14 @@ const MealsList = () => {
     const [text, setText] = useState('');
     const [option, setOption] = useState('');
 
-    const {loading, error, getAllMeals} = useMealSharingService();
+    const {loading, error, getAllMeals, clearError} = useMealSharingService();
 
     useEffect(() => {
         getMeals();
     }, [])
 
     const getMeals = () => {
+        clearError();
         getAllMeals().then(res => setData(res));
         
     } 

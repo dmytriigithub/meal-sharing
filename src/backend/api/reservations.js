@@ -7,11 +7,12 @@ reservationsRouter.get("/", async (request, response) => {
       const allReservations = await knex("Reservation").select("*")
       if(!allReservations.length){
         response.status(404).json({ error: 'That shit doesn’t exist.' });
+        return;
       }
       response.json(allReservations);
     } 
     catch (error) {
-      res.status(500).json({
+      response.status(500).json({
         error: 'Error while looking for the reservation'
       });
     }
@@ -23,11 +24,12 @@ reservationsRouter.get("/", async (request, response) => {
       const idReservation = await knex("Reservation").select("*").where("id", '=', id);
       if(!idReservation.length){
         response.status(404).json({ error: 'That shit doesn’t exist' });
+        return;
       }
       response.json(idReservation);
     } 
     catch (error) {
-      res.status(500).json({
+      response.status(500).json({
         error: 'Error while looking for the reservation'
       });
     }
@@ -36,14 +38,16 @@ reservationsRouter.get("/", async (request, response) => {
   reservationsRouter.post("/", async (request, response) => {
     try {
       await knex("Reservation").insert(request.body);
-      response.status(201).json({messge: "Look Mum, I made a thing"});
+      response.status(201).json({messange: "Look Mum, I made a thing"});
     } 
     catch (error) {
-      res.status(500).json({
+      response.status(500).json({
         error: 'Error while creating the reservation'
       });
     }
   });
+
+  
   
   reservationsRouter.put("/:id", async (request, response) => {
     try {
@@ -51,10 +55,12 @@ reservationsRouter.get("/", async (request, response) => {
       const idReservation = await knex("Reservation").where({ id: id }).update(request.body);
       if(idReservation){
         response.status(202).json({ messange: 'This shit changed' });
+      } else {
+        response.status(404).json({ error: 'That shit doesn’t exist' });
       }
     } 
     catch (error) {
-      res.status(500).json({
+      response.status(500).json({
         error: 'Error while updating the reservation'
       });
     }
@@ -67,7 +73,7 @@ reservationsRouter.get("/", async (request, response) => {
       response.status(200).json({ messange: 'This shit deleted' });;
     } 
     catch (error) {
-      res.status(500).json({
+      response.status(500).json({
         error: 'Error while deleting the reservation'
       });
     }

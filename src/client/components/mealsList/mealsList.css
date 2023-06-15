@@ -9,8 +9,8 @@
 .meal-list_item {
 
     margin-bottom: 20px;
-    background-color: #9589892d;
-    border-radius: 10px;
+    border-radius: 5px;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
 
     --w: 1000px;   
     --h: 300px;  
@@ -20,7 +20,6 @@
 
     width: var(--w);
     height: var(--h);
-    outline: calc(var(--h)/2) solid rgba(0, 0, 0, 0.151);
     outline-offset: calc(var(--h)/-2);
     cursor: pointer;
     transition: 0.3s;

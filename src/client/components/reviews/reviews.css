@@ -1,0 +1,37 @@
+.review-list_item {
+	width: 700px;
+    border: solid;
+    border-width: 1px;
+    border-radius: 15px;
+    padding: 0 30px;
+    margin: 20px 0;
+}
+
+.rating-result {
+	display: flex;
+    align-items: center;
+}
+.rating-result span {
+	padding: 0;
+	font-size: 32px;
+	margin: 0 3px;
+	line-height: 1;
+	color: lightgrey;
+	text-shadow: 1px 1px #bbb;
+}
+.rating-result > span:before {
+	content: '★';
+}
+.rating-result > span.active {
+	color: gold;
+	text-shadow: 1px 1px #c60;
+}
+
+.rating-stars {
+    margin-left: 10px;
+}
+
+.emptyList {
+	display: flex;
+	flex-direction: column;
+}

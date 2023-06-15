@@ -4,28 +4,59 @@
     align-items: center;
 }
 
+.single-meal__title {
+    padding: 0 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .single-meal__info {
-    background-color: #9589892d;;
-    padding: 10px;
-    border-radius: 10px;
+    border-radius: 5px;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+    margin-bottom: 30px;
 }
 
 .single-meal__wrapper {
+    padding: 0 30px;
     display: flex;
     justify-content: space-between;
     margin-bottom: 50px;
 }
 
-.single-meal__back {
-    font-weight: bold;
-    font-size: large;
-}
-
-.single-meal__back:hover {
-    font-size: x-large;
-}
-
 .single-meal__img {
     width: 700px;
     height: 500px;
+}
+
+.btnSingleMeal, .single-meal__back {
+    margin-bottom: 30px;
+    padding: 0;
+    border: none;
+    font: inherit;
+    font-weight: bold;
+    color: inherit;
+    background-color: transparent;
+    cursor: pointer; 
+}
+
+.btnSingleMeal:hover, .single-meal__back:hover {
+    font-size: medium;
+    color:#F26644;
+   
+}
+
+.btnReview:hover {
+    font-size: large;
+    color: #F26644;
+   
+}
+
+.btnSingleMeal:active, .single-meal__back:active {
+    transform: translateY(1px);
+    filter: saturate(150%);
+  }
+
+h2 {
+    text-align: center;
 }

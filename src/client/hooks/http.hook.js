@@ -7,24 +7,37 @@ export const useHttp = () => {
     const request = useCallback(async (url, method = 'GET', body = null, headers = {'Content-Type': 'application/json'}) => {
 
         setLoading(true);
-
+    
         try {
-            const response = await fetch(url, {method, body, headers});
-
-            if (!response.ok) {
+            const options = {
+                method,
+                headers,
+                body: body ? JSON.stringify(body) : null
+            };
+    
+            const response = await fetch(url, options);
+            if (response.status === 404) {
+                const data = await response.json([]);
+    
+                setLoading(false);
+                return data;
+            } else if (!response.ok) {
                 throw new Error(`Could not fetch ${url}, status: ${response.status}`);
+            } else {
+                const data = await response.json();
+    
+                setLoading(false);
+                return data;
             }
-
-            const data = await response.json();
-
-            setLoading(false);
-            return data;
         } catch(e) {
             setLoading(false);
             setError(e.message);
             throw e;
         }
     }, []);
+    
+
+    
 
     const clearError = useCallback(() => setError(null), []);
 

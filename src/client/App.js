@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from "react";
+import React from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import {MainPage, MealsPage, Page404, SingleMealCard} from '../client/components/pages';
+import {MainPage, MealsPage, Page404, SingleMealPage} from '../client/components/pages';
 
 import TestComponent from "./components/TestComponent/TestComponent";
 import Header from "./components/header/Header";
@@ -24,14 +24,14 @@ function App() {
               <ErrorBoundary>
                 <MealsPage/>
               </ErrorBoundary>
-              
             </Route>
+
             <Route exact path="/meals/:mealId">
               <ErrorBoundary>
-                <SingleMealCard/>
+                <SingleMealPage/>
               </ErrorBoundary>
-              
             </Route>
+
             <Route path="*">
                 <Page404/>
             </Route>

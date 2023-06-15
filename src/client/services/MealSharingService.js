@@ -5,15 +5,50 @@ const useMealSharingService = () => {
 
 
 	const getAllMeals = async () => {
-		const res = await request("http://localhost:5000/api/meals/");
-		console.log(res)
-		return res.map(_transformMeals);
+		const response = await request("http://localhost:5000/api/meals/");
+		console.log(response)
+		return response.map(_transformMeals);
 	};
 
 	const getMeal = async (id) => {
-		const res = await request(`http://localhost:5000/api/meals/${id}`);
-		return _transformMeal(res[0]);
+		const response = await request(`http://localhost:5000/api/meals/${id}`);
+		return _transformMeal(response[0]);
 	};
+
+	const getReview = async (id) => {
+		const response = await request(`http://localhost:5000/api/reviews/${id}`);
+		return response.map(_transformReview);
+	};
+
+	const postReservation = async (data) => {
+		const url = "http://localhost:5000/api/reservations/";
+		const method = 'POST';
+		const body = data;
+		const headers = {'Content-Type': 'application/json'};
+	
+		try {
+			const response = await request(url, method, body, headers);
+			console.log(response);
+		} catch (error) {
+			console.error(error);
+		}
+	};
+
+	const postReview = async (data) => {
+		const url = "http://localhost:5000/api/reviews/";
+		const method = 'POST';
+		const body = data;
+		const headers = {'Content-Type': 'application/json'};
+	
+		try {
+			const response = await request(url, method, body, headers);
+			console.log(response);
+		} catch (error) {
+			console.error(error);
+		}
+	};
+	
+
 
 	const _transformMeals = (item) => {
 		return {
@@ -45,6 +80,18 @@ const useMealSharingService = () => {
 		};
 	};
 
+	const _transformReview = (item) => {
+		return {
+			id: item.id,
+			name: item.name,
+			stars: item.stars,
+			description: item.description
+				? item.description
+				: "There is no description",
+			date: item.created_date
+		};
+	};
+
 
 
 	return {
@@ -52,6 +99,9 @@ const useMealSharingService = () => {
 		error,
 		getAllMeals,
 		getMeal,
+		getReview,
+		postReservation,
+		postReview,
 		clearError
 	
 	};
