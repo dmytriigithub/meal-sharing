@@ -1,3 +1,7 @@
+
+
+https://github.com/dmytriigithub/meal-sharing/assets/98831842/eb750f87-0803-49d7-81bd-7fa44d278c32
+
 <p align="center">
   <a href="" rel="noopener">
  <img width=200px height=200px src="https://www.hackyourfuture.dk/static/logo-dark.svg" alt="Project logo"></a>
